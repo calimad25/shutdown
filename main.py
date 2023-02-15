@@ -1,6 +1,7 @@
 import os
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+from PyQt6.QtGui import QIcon
 
 
 def shutdown(time):
@@ -16,6 +17,7 @@ class Window(QWidget):
         super().__init__()
         self.setWindowTitle("Shutdown App")
         self.setGeometry(300, 200, 300, 200)
+        self.setWindowIcon(QIcon("power-button.png"))
 
         box = QVBoxLayout()
 
