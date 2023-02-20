@@ -1,6 +1,6 @@
 import os
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLineEdit
 from PyQt6.QtGui import QIcon
 
 
@@ -23,12 +23,17 @@ class Window(QWidget):
 
         button1 = QPushButton("&Now")
         button1.clicked.connect(lambda x: shutdown(1))
-        button2 = QPushButton("&30 min")
+        button2 = QPushButton("30 min")
         button2.clicked.connect(lambda x: shutdown(1800))
-        button3 = QPushButton("&1 hour")
+        button3 = QPushButton("1 hour")
         button3.clicked.connect(lambda x: shutdown(3600))
-        button4 = QPushButton("&2 hours")
+        button4 = QPushButton("2 hours")
         button4.clicked.connect(lambda x: shutdown(7200))
+
+        self.inputField = QLineEdit()
+        button5 = QPushButton("Custom")
+        button5.clicked.connect(lambda x: shutdown(self.inputField.text()))
+
         button6 = QPushButton("&Cancel Shutdown")
         button6.clicked.connect(cancel_shutdown)
 
@@ -36,6 +41,8 @@ class Window(QWidget):
         box.addWidget(button2)
         box.addWidget(button3)
         box.addWidget(button4)
+        box.addWidget(self.inputField)
+        box.addWidget(button5)
         box.addWidget(button6)
 
         self.setLayout(box)
